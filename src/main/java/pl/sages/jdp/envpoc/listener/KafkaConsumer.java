@@ -26,9 +26,9 @@ public class KafkaConsumer {
         System.out.println("Consumed JSON Task: " + task);
 
         TaskExecutor taskExecutor = new TaskExecutor(task);
-        taskExecutor.execute();
+        var result = taskExecutor.execute();
 
-        task.setTaskStatus("finished");
+        task.setTaskStatus(result == 0 ? "finished" : "failed");
 
         kafkaTemplate.send(TOPIC, task);
         System.out.println("Finished JSON Task: " + task);

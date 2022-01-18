@@ -10,16 +10,18 @@ public class TaskExecutor {
 
     private Task task;
 
-    public void execute() {
+    public int execute() {
 
         try {
-            String commands = "cd " + task.getTaskPath() + "; docker-compose up; sleep 10";
-            Process p = Runtime.getRuntime().exec(new String[]{"bash","-c",commands});
-            p.waitFor();
+            String commands = "cd " + task.getTaskPath() + "; docker-compose up";
+            Process p = Runtime.getRuntime().exec(new String[]{"bash", "-c", commands});
+            return p.waitFor();
         } catch (InterruptedException e) {
             e.printStackTrace();
+            return -1;
         } catch (IOException e) {
             e.printStackTrace();
+            return -1;
         }
 
     }
