@@ -1,4 +1,4 @@
-package pl.sages.javadevpro.projecttwo.external.env.model;
+package pl.sages.javadevpro.projecttwo.external.env.usertask;
 
 public enum UserTaskStatusEnv {
 

@@ -1,7 +1,7 @@
 package pl.sages.javadevpro.projecttwo.external.env.executor;
 
 import lombok.AllArgsConstructor;
-import pl.sages.javadevpro.projecttwo.external.env.model.UserTaskEnv;
+import pl.sages.javadevpro.projecttwo.external.env.usertask.UserTaskEnv;
 
 import java.io.IOException;
 

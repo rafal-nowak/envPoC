@@ -6,9 +6,9 @@ import org.springframework.kafka.annotation.KafkaListener;
 
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
-import pl.sages.javadevpro.projecttwo.external.env.model.UserTaskStatusEnv;
+import pl.sages.javadevpro.projecttwo.external.env.usertask.UserTaskStatusEnv;
 import pl.sages.javadevpro.projecttwo.external.env.executor.TaskExecutor;
-import pl.sages.javadevpro.projecttwo.external.env.model.UserTaskEnv;
+import pl.sages.javadevpro.projecttwo.external.env.usertask.UserTaskEnv;
 
 
 @Service
