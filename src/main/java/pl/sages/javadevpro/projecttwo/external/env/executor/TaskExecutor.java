@@ -16,10 +16,7 @@ public class TaskExecutor {
             String commands = "cd " + task.getUserTaskFolder() + "; docker-compose up";
             Process p = Runtime.getRuntime().exec(new String[]{"bash", "-c", commands});
             return p.waitFor();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-            return -1;
-        } catch (IOException e) {
+        } catch (InterruptedException | IOException e) {
             e.printStackTrace();
             return -1;
         }
