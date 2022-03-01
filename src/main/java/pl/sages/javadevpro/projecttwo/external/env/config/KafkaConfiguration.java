@@ -25,16 +25,22 @@ import java.util.Map;
 public class KafkaConfiguration {
 
 
+    public static final String KAFKA_IP_ADDRESS = "127.0.0.1:9092";
+    public static final String KAFKA_GROUP_ID = "group_json";
+    public static final String KAFKA_TRUSTED_PACKAGES = "*";
+    public static final String KAFKA_LISTENER_TOPIC = "Kafka_Task_json";
+    public static final String KAFKA_PRODUCER_TOPIC = "Kafka_Task_Report_json";
+
     @Bean
     public ConsumerFactory<String, UserTaskEnv> taskConsumerFactory() {
         Map<String, Object> config = new HashMap<>();
 
 
-        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
-        config.put(ConsumerConfig.GROUP_ID_CONFIG, "group_json");
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, KAFKA_IP_ADDRESS);
+        config.put(ConsumerConfig.GROUP_ID_CONFIG, KAFKA_GROUP_ID);
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
-        config.put(JsonDeserializer.TRUSTED_PACKAGES, "*");
+        config.put(JsonDeserializer.TRUSTED_PACKAGES, KAFKA_TRUSTED_PACKAGES);
 
 
         return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(),
@@ -52,7 +58,7 @@ public class KafkaConfiguration {
     public ProducerFactory<String, UserTaskEnv> taskProducerFactory() {
         Map<String, Object> config = new HashMap<>();
 
-        config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "127.0.0.1:9092");
+        config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, KAFKA_IP_ADDRESS);
         config.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         config.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
 
