@@ -1,4 +1,4 @@
-package pl.sages.javadevpro.projecttwo.external.env.executor;
+package pl.sages.javadevpro.projecttwo.external.env.domain;
 
 import pl.sages.javadevpro.projecttwo.external.env.usertask.UserTaskEnv;
 
