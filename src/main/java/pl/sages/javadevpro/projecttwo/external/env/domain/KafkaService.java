@@ -1,4 +1,4 @@
-package pl.sages.javadevpro.projecttwo.external.env.listener;
+package pl.sages.javadevpro.projecttwo.external.env.domain;
 
 
 import lombok.AllArgsConstructor;
@@ -6,8 +6,6 @@ import lombok.extern.java.Log;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
-import pl.sages.javadevpro.projecttwo.external.env.executor.TaskExecutor;
-import pl.sages.javadevpro.projecttwo.external.env.executor.TaskExecutorStatus;
 import pl.sages.javadevpro.projecttwo.external.env.usertask.UserTaskEnv;
 import pl.sages.javadevpro.projecttwo.external.env.usertask.UserTaskStatusEnv;
 

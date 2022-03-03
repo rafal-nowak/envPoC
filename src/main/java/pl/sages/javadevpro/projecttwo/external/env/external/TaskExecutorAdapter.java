@@ -1,14 +1,16 @@
-package pl.sages.javadevpro.projecttwo.external.env.executor;
+package pl.sages.javadevpro.projecttwo.external.env.external;
 
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.sages.javadevpro.projecttwo.external.env.domain.TaskExecutor;
+import pl.sages.javadevpro.projecttwo.external.env.domain.TaskExecutorStatus;
 import pl.sages.javadevpro.projecttwo.external.env.usertask.UserTaskEnv;
 
 import java.io.IOException;
 
 @Service
 @NoArgsConstructor
-public class TaskExecutorService implements TaskExecutor{
+public class TaskExecutorAdapter implements TaskExecutor {
 
     private UserTaskEnv task;
 
