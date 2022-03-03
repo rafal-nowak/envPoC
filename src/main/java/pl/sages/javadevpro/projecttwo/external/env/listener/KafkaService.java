@@ -7,9 +7,10 @@ import org.springframework.kafka.annotation.KafkaListener;
 
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
+import pl.sages.javadevpro.projecttwo.external.env.executor.TaskExecutor;
 import pl.sages.javadevpro.projecttwo.external.env.executor.TaskExecutorStatus;
 import pl.sages.javadevpro.projecttwo.external.env.usertask.UserTaskStatusEnv;
-import pl.sages.javadevpro.projecttwo.external.env.executor.TaskExecutor;
+import pl.sages.javadevpro.projecttwo.external.env.executor.TaskExecutorService;
 import pl.sages.javadevpro.projecttwo.external.env.usertask.UserTaskEnv;
 
 import static pl.sages.javadevpro.projecttwo.external.env.config.KafkaConfiguration.KAFKA_GROUP_ID;
@@ -30,7 +31,7 @@ public class KafkaService {
 
         log.info("Consumed JSON Task: " + task);
 
-        TaskExecutor taskExecutor = new TaskExecutor(task);
+        TaskExecutor taskExecutor = new TaskExecutorService(task);
         var result = taskExecutor.execute();
 
         task.setTaskStatus(result == TaskExecutorStatus.COMPLETED ? UserTaskStatusEnv.COMPLETED : UserTaskStatusEnv.FAILED);
