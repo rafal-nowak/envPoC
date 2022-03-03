@@ -1,14 +1,20 @@
 package pl.sages.javadevpro.projecttwo.external.env.executor;
 
-import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Service;
 import pl.sages.javadevpro.projecttwo.external.env.usertask.UserTaskEnv;
 
 import java.io.IOException;
 
-@AllArgsConstructor
+@Service
+@NoArgsConstructor
 public class TaskExecutorService implements TaskExecutor{
 
     private UserTaskEnv task;
+
+    public void setTask(UserTaskEnv task) {
+        this.task = task;
+    }
 
     @Override
     public TaskExecutorStatus execute() {
