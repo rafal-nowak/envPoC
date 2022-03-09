@@ -1,7 +1,7 @@
 package pl.sages.javadevpro.projecttwo.external.env.domain;
 
-public enum TaskExecutorStatus {
+public interface TaskProcessor {
 
-    COMPLETED, FAILED
+    void onReceive(Task task);
 
 }
