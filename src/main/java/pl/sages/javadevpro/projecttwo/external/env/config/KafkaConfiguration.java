@@ -15,7 +15,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 import org.springframework.kafka.support.serializer.JsonSerializer;
-import pl.sages.javadevpro.projecttwo.external.env.usertask.UserTaskEnv;
+import pl.sages.javadevpro.projecttwo.external.env.domain.Task;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,11 +28,11 @@ public class KafkaConfiguration {
     public static final String KAFKA_IP_ADDRESS = "127.0.0.1:9092";
     public static final String KAFKA_GROUP_ID = "group_json";
     public static final String KAFKA_TRUSTED_PACKAGES = "*";
-    public static final String KAFKA_LISTENER_TOPIC = "Kafka_Task_json";
-    public static final String KAFKA_PRODUCER_TOPIC = "Kafka_Task_Report_json";
+    public static final String TASKS_INBOUND_TOPIC = "Kafka_Task_json";
+    public static final String TASKS_OUTBOUND_TOPIC = "Kafka_Task_Report_json";
 
     @Bean
-    public ConsumerFactory<String, UserTaskEnv> taskConsumerFactory() {
+    public ConsumerFactory<String, Task> taskConsumerFactory() {
         Map<String, Object> config = new HashMap<>();
 
 
@@ -44,18 +44,18 @@ public class KafkaConfiguration {
 
 
         return new DefaultKafkaConsumerFactory<>(config, new StringDeserializer(),
-                new JsonDeserializer<>(UserTaskEnv.class));
+                new JsonDeserializer<>(Task.class));
     }
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, UserTaskEnv> taskKafkaListenerFactory() {
-        ConcurrentKafkaListenerContainerFactory<String, UserTaskEnv> factory = new ConcurrentKafkaListenerContainerFactory<>();
+    public ConcurrentKafkaListenerContainerFactory<String, Task> taskKafkaListenerFactory() {
+        ConcurrentKafkaListenerContainerFactory<String, Task> factory = new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(taskConsumerFactory());
         return factory;
     }
 
     @Bean
-    public ProducerFactory<String, UserTaskEnv> taskProducerFactory() {
+    public ProducerFactory<String, Task> taskProducerFactory() {
         Map<String, Object> config = new HashMap<>();
 
         config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, KAFKA_IP_ADDRESS);
@@ -67,7 +67,7 @@ public class KafkaConfiguration {
 
 
     @Bean
-    public KafkaTemplate<String, UserTaskEnv> taskKafkaTemplate() {
+    public KafkaTemplate<String, Task> taskKafkaTemplate() {
         return new KafkaTemplate<>(taskProducerFactory());
     }
 
