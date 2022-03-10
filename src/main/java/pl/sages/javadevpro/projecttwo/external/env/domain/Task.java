@@ -1,8 +1,12 @@
 package pl.sages.javadevpro.projecttwo.external.env.domain;
 
-import lombok.Value;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Value
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Task {
 
     String id;
