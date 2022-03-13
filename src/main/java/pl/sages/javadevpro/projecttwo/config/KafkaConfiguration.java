@@ -1,4 +1,4 @@
-package pl.sages.javadevpro.projecttwo.external.env.config;
+package pl.sages.javadevpro.projecttwo.config;
 
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -15,7 +15,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 import org.springframework.kafka.support.serializer.JsonSerializer;
-import pl.sages.javadevpro.projecttwo.external.env.domain.Task;
+import pl.sages.javadevpro.projecttwo.domain.task.Task;
 
 import java.util.HashMap;
 import java.util.Map;

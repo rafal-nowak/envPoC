@@ -1,15 +1,15 @@
-package pl.sages.javadevpro.projecttwo.external.env.external;
+package pl.sages.javadevpro.projecttwo.external;
 
 import lombok.extern.java.Log;
 import org.springframework.stereotype.Service;
-import pl.sages.javadevpro.projecttwo.external.env.domain.ExecutionStatus;
-import pl.sages.javadevpro.projecttwo.external.env.domain.Task;
-import pl.sages.javadevpro.projecttwo.external.env.domain.TaskExecutor;
+import pl.sages.javadevpro.projecttwo.domain.ExecutionStatus;
+import pl.sages.javadevpro.projecttwo.domain.task.Task;
+import pl.sages.javadevpro.projecttwo.domain.TaskExecutor;
 
 import java.io.IOException;
 
 import static java.lang.Runtime.getRuntime;
-import static pl.sages.javadevpro.projecttwo.external.env.domain.ExecutionStatus.*;
+import static pl.sages.javadevpro.projecttwo.domain.ExecutionStatus.*;
 
 @Log
 @Service
