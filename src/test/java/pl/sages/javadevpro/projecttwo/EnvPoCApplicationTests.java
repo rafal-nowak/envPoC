@@ -1,4 +1,4 @@
-package pl.sages.javadevpro.projecttwo.external.env;
+package pl.sages.javadevpro.projecttwo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

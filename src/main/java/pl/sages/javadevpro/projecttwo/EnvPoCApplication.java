@@ -1,4 +1,4 @@
-package pl.sages.javadevpro.projecttwo.external.env;
+package pl.sages.javadevpro.projecttwo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

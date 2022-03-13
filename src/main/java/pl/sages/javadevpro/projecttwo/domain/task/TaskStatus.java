@@ -1,4 +1,4 @@
-package pl.sages.javadevpro.projecttwo.external.env.domain;
+package pl.sages.javadevpro.projecttwo.domain.task;
 
 public enum TaskStatus {
 
