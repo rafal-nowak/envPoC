@@ -11,19 +11,23 @@ import pl.sages.javadevpro.projecttwo.domain.TaskExecutor;
 import pl.sages.javadevpro.projecttwo.domain.TaskProcessor;
 import pl.sages.javadevpro.projecttwo.domain.task.Task;
 import pl.sages.javadevpro.projecttwo.domain.task.TaskStatus;
+import pl.sages.javadevpro.projecttwo.external.env.task.TaskEnv;
+import pl.sages.javadevpro.projecttwo.external.env.task.TaskEnvMapper;
 
 @Service
 @RequiredArgsConstructor
-public class KafkaTaskProcessor implements TaskProcessor {
+public class KafkaTaskProcessor {
 
-    private final KafkaTemplate<String, Task> kafkaTemplate;
+    private final KafkaTemplate<String, TaskEnv> kafkaTemplate;
     private final TaskExecutor taskExecutor;
+    private final TaskEnvMapper taskEnvMapper;
 
     @KafkaListener(topics = KafkaConfiguration.TASKS_INBOUND_TOPIC, groupId = KafkaConfiguration.KAFKA_GROUP_ID, containerFactory = "taskKafkaListenerFactory")
-    public void onReceive(Task task) {
-        var executionResult = taskExecutor.execute(task);
+    public void onReceive(TaskEnv taskEnv) {
+        var executionResult = taskExecutor.execute(taskEnvMapper.toDomain(taskEnv));
         var taskStatus =  executionResult == ExecutionStatus.COMPLETED ? TaskStatus.COMPLETED : TaskStatus.FAILED;
-        kafkaTemplate.send(KafkaConfiguration.TASKS_OUTBOUND_TOPIC, task.withStatus(taskStatus));
+        var task = taskEnvMapper.toDomain(taskEnv).withStatus(taskStatus);
+        kafkaTemplate.send(KafkaConfiguration.TASKS_OUTBOUND_TOPIC, taskEnvMapper.toDto(task));
     }
 
 }
